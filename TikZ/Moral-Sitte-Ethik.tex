@@ -1,0 +1,60 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{smartdiagram} %für tikz
+\usepackage[ngerman]{babel} %Sprache deutsch (für Silbentrennung)
+\usepackage[utf8]{inputenc} %UTF-Code für Umlaute
+\usepackage[T1]{fontenc} %Trennung von Wörtern mit Umlauten
+\usepackage{lmodern} %Schriftart
+%\usepackage{libertine}
+\renewcommand*\familydefault{\sfdefault} %Serifenlose Schrift als Standard
+\usepackage{microtype}
+\usesmartdiagramlibrary{additions}
+\usetikzlibrary{fit}
+\usetikzlibrary{decorations.pathreplacing}
+
+\tikzstyle{container} = [draw, rectangle, semithick, inner sep=0.3cm
+]
+
+%Aufzählungsstriche
+\AtBeginDocument{
+	\def\labelitemi{\normalfont\bfseries{--}}
+}
+
+
+\begin{document}
+	
+
+	\begin{tikzpicture}
+		
+				
+		\node[circle, draw, minimum size=2.6cm,
+		label= {[label distance=-.8cm]90: Moral}](Moral){};
+		
+		\node[circle, draw, minimum size= 1.8cm, yshift=-.4cm](Sitte){Sitte};
+		
+		\node[circle, draw, gray, align=left,  minimum size=2.6cm,  left=.3cm of Moral] (Perfektion) {Perfektion der\\  Lebensführung};
+		
+
+		
+		\node[yshift=1.4cm
+		] at (Perfektion.west)(Perfektion-w){};	
+		
+		\node[yshift=1.4cm
+		] at (Moral.east)(Moral-r){};
+		
+		\draw [decorate,decoration={brace,amplitude=5pt}] (Perfektion-w) -- (Moral-r) node[midway, yshift=.5cm]{\textbf{Ethik}};
+		
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	
+		\draw [dashed] (Moral.245) -- (Moral.45);
+	
+		\node[xshift=.65cm , yshift=-1.4cm
+		] at (Moral.west)(Moral-w){};	
+		
+		\node[yshift=-1.4cm
+		] at (Moral.east)(Moral-r){};
+		
+		\draw [decorate,decoration={brace,amplitude=5pt, mirror}] (Moral-w) -- (Moral-r) node[midway, yshift=-.5cm]{\textbf{Wirtschaftsethik}};
+		
+	\end{tikzpicture}
+
+\end{document}
